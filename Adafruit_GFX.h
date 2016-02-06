@@ -1,19 +1,24 @@
 #ifndef _ADAFRUIT_GFX_H
 #define _ADAFRUIT_GFX_H
 
-#if ARDUINO >= 100
- #include "Arduino.h"
- #include "Print.h"
+#if ARDUINO
+  #if ARDUINO >= 100
+   #include "Arduino.h"
+   #include "Print.h"
+  #else
+   #include "WProgram.h"
+  #endif
 #else
- #include "WProgram.h"
+  #include "avrlib/base.h"
 #endif
+
 
 #define swap(a, b) { int16_t t = a; a = b; b = t; }
 
-class Adafruit_GFX : public Print {
+class Adafruit_GFX //: public Print
+{
 
  public:
-
   Adafruit_GFX(int16_t w, int16_t h); // Constructor
 
   // This MUST be defined by the subclass:
